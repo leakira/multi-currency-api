@@ -6,7 +6,7 @@
 
 # Environment normalization:
 /.bundle
-/vendor/bundle
+/vendor
 
 # macOS
 *.DS_Store
