@@ -13,18 +13,13 @@ jobs:
       - checkout
 
       - run:
-          name: Configure Bundler
+          name: Configure Bundler and set custom environment variables
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            echo 'export DEFAULT_PLUGIN="free_currency_converter"' >> $BASH_ENV
+            echo 'export CURRENCY_LAYER_TOKEN="fa2c9d867db7f282a7c46587cd829ac1"' >> $BASH_ENV
             source $BASH_ENV
             gem install bundler
-
-      - run:
-           name: Setup custom environment variables
-           command: |
-             echo 'export DEFAULT_PLUGIN="free_currency_converter"' >> $BASH_ENV
-             echo 'export CURRENCY_LAYER_TOKEN="fa2c9d867db7f282a7c46587cd829ac1"' >> $BASH_ENV
-             source $BASH_ENV
 
       # Restore bundle cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
