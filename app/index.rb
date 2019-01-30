@@ -1,4 +1,4 @@
-require 'sinatra/reloader'
+require 'sinatra/reloader' if development?
 
 class App < Sinatra::Base
   configure do

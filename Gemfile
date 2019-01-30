@@ -18,7 +18,10 @@ gem 'activesupport', '~> 5.2', require: %w[
 ]
 
 # Heroku
-gem 'sqreen'
+group :production do
+  gem 'sqreen'
+end
+
 
 group :development, :test do
   gem 'sinatra-reloader', '~> 1.0'
