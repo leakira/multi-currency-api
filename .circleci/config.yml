@@ -13,43 +13,44 @@ jobs:
       - checkout
 
       - run:
-          name: Setup custom environment variables
-          command: |
-            echo 'export DEFAULT_PLUGIN: free_currency_converter' >> $BASH_ENV
-            echo 'export CURRENCY_LAYER_TOKEN: fa2c9d867db7f282a7c46587cd829ac1' >> $BASH_ENV
+        name: Configure Bundler
+        command: |
+          echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+          source $BASH_ENV
+          gem install bundler
 
       - run:
-          name: Configure Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler
+         name: Setup custom environment variables
+         command: |
+           echo 'export DEFAULT_PLUGIN="free_currency_converter"' >> $BASH_ENV
+           echo 'export CURRENCY_LAYER_TOKEN="fa2c9d867db7f282a7c46587cd829ac1"' >> $BASH_ENV
+           source $BASH_ENV
 
       # Restore bundle cache
       # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
       - restore_cache:
-          keys:
-            - multi-currency-{{ checksum "Gemfile.lock" }}
-            - multi-currency-
+        keys:
+          - multi-currency-{{ checksum "Gemfile.lock" }}
+          - multi-currency-
 
       - run: # Install Ruby dependencies
-          name: Bundle Install
-          command: bundle check || bundle install
+        name: Bundle Install
+        command: bundle check || bundle install
 
       # Store bundle cache for Ruby dependencies
       - save_cache:
-          key: multi-currency-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+        key: multi-currency-{{ checksum "Gemfile.lock" }}
+        paths:
+          - vendor/bundle
 
       - run:
-          name: Run rspec in parallel
-          command: |
-            bundle exec rspec --profile 10 \
-                              --out test_results/rspec.xml \
-                              --format progress \
-                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+        name: Run rspec in parallel
+        command: |
+          bundle exec rspec --profile 10 \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       # Save test results for timing analysis
       - store_test_results: # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: test_results
+        path: test_results
