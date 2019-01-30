@@ -17,6 +17,9 @@ gem 'activesupport', '~> 5.2', require: %w[
   active_support/dependencies
 ]
 
+# Heroku
+gem 'sqreen'
+
 group :development, :test do
   gem 'sinatra-reloader', '~> 1.0'
   gem 'rack-test', require: 'rack/test'

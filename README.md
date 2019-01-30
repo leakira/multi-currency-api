@@ -1,9 +1,9 @@
 # MultiCurrency
 API to multiple currency convertion
 
-## Access
+## Test using
 ```
-http://sss
+https://multi-currency.herokuapp.com/
 ```
 
 ## Endpoints
