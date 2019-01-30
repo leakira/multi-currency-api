@@ -1,12 +1,17 @@
 require 'sinatra/reloader' if development?
 
 class App < Sinatra::Base
-  configure do
-    register Sinatra::Reloader if development?
+  configure :development do
+    register Sinatra::Reloader
+    disable :show_exceptions
   end
 
   before do
     content_type :json
+  end
+
+  error do
+    redirect '/'
   end
 
   get '/' do
