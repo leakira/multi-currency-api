@@ -1,7 +1,7 @@
 require_relative './spec_helper.rb'
 
 describe 'MultiCurrency', type: :controller do
-  let(:index) { JSON.parse File.read("#{File.dirname(__FILE__)}/fixtures/index.json") }
+  let(:index) { JSON.parse File.read("#{File.dirname(__FILE__)}/../app/assets/description.json") }
   let(:currency) { JSON.parse File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json") }
   let(:converted) { JSON.parse File.read("#{File.dirname(__FILE__)}/fixtures/converted.json") }
   let(:converted_error) { JSON.parse File.read("#{File.dirname(__FILE__)}/fixtures/converted_error.json") }
