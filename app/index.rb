@@ -10,8 +10,8 @@ class App < Sinatra::Base
     content_type :json
   end
 
-  error do
-    redirect '/'
+  not_found do
+    { error: 'Invalid request' }.to_json
   end
 
   get '/' do
