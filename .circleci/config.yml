@@ -13,6 +13,12 @@ jobs:
       - checkout
 
       - run:
+          name: Setup custom environment variables
+          command: |
+            echo 'export DEFAULT_PLUGIN: free_currency_converter' >> $BASH_ENV
+            echo 'export CURRENCY_LAYER_TOKEN: fa2c9d867db7f282a7c46587cd829ac1' >> $BASH_ENV
+
+      - run:
           name: Configure Bundler
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
