@@ -5,8 +5,9 @@ API to multiple currency convertion
 https://multi-currency.herokuapp.com/
 
 ## Endpoints
-- /currency: Get list of all available currency to convert wth each description
-- /currency/names: Get list of the name of all available
+- /currency: Get list of all available currencies to convert wth each description
+- /currency/names: Get list of the name of all available currencies
+- /plugins: Get list of currenct available plugins
 - /convert/: Make conversion
 
 ## To convert

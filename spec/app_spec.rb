@@ -1,8 +1,30 @@
 require_relative './spec_helper.rb'
 
 describe 'MultiCurrency', type: :controller do
-  let(:index) { JSON.parse File.read("#{File.dirname(__FILE__)}/../app/assets/description.json") }
-  let(:currency) { JSON.parse File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json") }
+  let(:index) {
+    {
+      success: 1,
+      message: '',
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/description.json")),
+    }
+  }
+
+  let(:currency) {
+    {
+      success: 1,
+      message: '',
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json")),
+    }
+  }
+
+  let(:plugins) {
+    {
+      success: 1,
+      message: '',
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/plugins.json")),
+    }
+  }
+
   let(:converted) { JSON.parse File.read("#{File.dirname(__FILE__)}/fixtures/converted.json") }
   let(:converted_error) { JSON.parse File.read("#{File.dirname(__FILE__)}/fixtures/converted_error.json") }
 
@@ -14,6 +36,11 @@ describe 'MultiCurrency', type: :controller do
   it 'currency should show all available currency with description' do
     get '/currency'
     expect(last_response.body).to eq(currency.to_json)
+  end
+
+  it 'plugins should show all available plugins' do
+    get '/plugins'
+    expect(last_response.body).to eq(plugins.to_json)
   end
 
   it 'convert 55 USD to USD should show same value' do

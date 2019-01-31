@@ -10,6 +10,9 @@
     "/currency/names": {
       "description": "Get list of the name of all available"
     },
+    "/plugins": {
+      "description": "Get list of currenct available plugins"
+    },
     "/convert": {
       "description": "Make conversion",
       "parameters": {

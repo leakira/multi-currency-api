@@ -12,7 +12,7 @@ class Plugin
     def find(value, from, to)
       to.each do |to_currency|
         next unless currency[to_currency].present?
-        run(value, from, to_currency)
+        run value, from, to_currency
       end
     end
 

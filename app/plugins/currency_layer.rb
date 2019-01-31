@@ -16,7 +16,9 @@ class CurrencyLayer < Plugin
     # Start: 2019-01-30 14:43:20 -0200
     # End: 2019-01-30 14:43:46 -0200
     def raw_run(value, from, to)
-      req = Curl.get "#{api}/live?source=#{from}&currencies=#{to}&format=1&access_key=#{token}"
+      url = "#{api}/live?source=#{from}&currencies=#{to}&format=1&access_key=#{token}"
+      pp "Running #{url}" if development?
+      req = Curl.get url
       res = JSON.parse req.body_str
 
       unless res['success']
@@ -30,7 +32,7 @@ class CurrencyLayer < Plugin
 
         conversion_result = value.to_f * res['quotes'][pair].to_f
         @response[to_currency] = currency[to_currency].merge({
-          value: conversion_result,
+          'value' => conversion_result,
         })
       end
     end

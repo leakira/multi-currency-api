@@ -11,20 +11,25 @@ class App < Sinatra::Base
   end
 
   not_found do
-    { error: 'Invalid request' }.to_json
+    status 404
+    response_as :error, message: 'Request not found'
   end
 
   get '/' do
-    response = File.read "#{File.dirname(__FILE__)}/assets/description.json"
-    JSON.parse(response).to_json
+    data_file = File.read "#{ASSET_PATH}/description.json"
+    response_as :success, data: JSON.parse(data_file)
   end
 
   get '/currency' do
-    currency.to_json
+    response_as :success, data: currency
   end
 
   get '/currency/names' do
-    currency.keys.to_json
+    response_as :success, data: currency.keys
+  end
+
+  get '/plugins' do
+    response_as :success, data: plugins
   end
 
   # convert/55?from=BRL&to=JPY&use=currency_converter
@@ -40,7 +45,19 @@ class App < Sinatra::Base
       .new(plugin)
       .convert(params[:value], from: params[:from], to: to)
 
-    response.to_json
+    if params.has_key? :text_format
+      content_type :text
+
+      text = []
+      response.each { |_,data| text << "#{data['currencySymbol']} #{data['value'].round(2)} (#{data['id']})" }
+      text.join("\n")
+    else
+      if response[:error].present?
+        response_as :error, message: response[:error]
+      else
+        response_as :success, data: response
+      end
+    end
   end
 
   private

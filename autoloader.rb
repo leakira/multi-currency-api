@@ -15,5 +15,6 @@ ActiveSupport::Dependencies.autoload_paths += %w[
 ]
 
 # Load initializers
-Dir['./app/*.rb'].each &method(:require) # Load first from app directory
+require './app/components/util'
+Dir['./app/components/*.rb'].each &method(:require) # Load first from components directory
 Dir['./app/**/*.rb'].each &method(:require)
