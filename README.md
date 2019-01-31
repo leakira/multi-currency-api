@@ -2,7 +2,7 @@
 API to multiple currency convertion
 
 ## Test using
-http://multi-currency.herokuapp.com
+http://multi-currency-api.herokuapp.com
 
 ## Endpoints
 - /currency: Get list of all available currency to convert wth each description
