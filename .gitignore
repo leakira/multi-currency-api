@@ -7,6 +7,7 @@
 # Environment normalization:
 /.bundle
 /vendor
+yarn-*.log
 
 # macOS
 *.DS_Store

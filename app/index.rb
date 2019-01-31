@@ -1,4 +1,5 @@
 require 'sinatra/reloader' if development?
+require 'sinatra/cross_origin'
 
 class App < Sinatra::Base
   configure :development do
@@ -6,13 +7,26 @@ class App < Sinatra::Base
     disable :show_exceptions
   end
 
+  configure do
+    enable :cross_origin
+  end
+
   before do
     content_type :json
+    response.headers['Access-Control-Allow-Origin'] = '*'
   end
 
   not_found do
     status 404
     response_as :error, message: 'Request not found'
+  end
+
+  options "*" do
+    response.headers['Allow']                        = 'GET'
+    response.headers['Access-Control-Allow-Headers'] = 'Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token'
+    response.headers['Access-Control-Allow-Origin']  = '*'
+
+    200
   end
 
   get '/' do
