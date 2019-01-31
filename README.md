@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/leakira/multi-currency-api.svg?style=svg)](https://circleci.com/gh/leakira/multi-currency-api)
+[![CircleCI](https://circleci.com/gh/leakira/multi-currency-api.svg?style=svg&circle-token=5ab05979cf9f875f0533e9644ced0e39cfff490b)](https://circleci.com/gh/leakira/multi-currency-api)
 
 # MultiCurrency
 API to multiple currency convertion
