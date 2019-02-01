@@ -13,7 +13,7 @@ describe 'MultiCurrency', type: :controller do
     {
       success: 1,
       message: '',
-      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json")),
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json")).sort.to_h,
     }
   }
 

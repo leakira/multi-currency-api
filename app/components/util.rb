@@ -4,7 +4,14 @@ ASSET_PATH = "#{APP_PATH}/assets"
 def currency
   @currency ||= begin
     file = File.read "#{ASSET_PATH}/currency.json"
-    JSON.parse file
+    JSON.parse(file).sort.to_h
+  end
+end
+
+def most_used
+  @most_used ||= begin
+    file = File.read "#{ASSET_PATH}/most_used.json"
+    JSON.parse(file).sort.to_h.values
   end
 end
 

@@ -8,12 +8,12 @@ class App < Sinatra::Base
   end
 
   configure do
-    enable :cross_origin
+    enable :cross_origin if ENV['ALLOWED_ORIGIN'].present?
   end
 
   before do
     content_type :json
-    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Origin'] = ENV['ALLOWED_ORIGIN'] if ENV['ALLOWED_ORIGIN'].present?
   end
 
   not_found do
@@ -35,11 +35,14 @@ class App < Sinatra::Base
   end
 
   get '/currency' do
-    response_as :success, data: currency
+    response_as :success, data: sorted_currency
   end
 
   get '/currency/names' do
-    response_as :success, data: currency.keys
+    data = sorted_currency
+    data = data.map { |_,d| "#{d['currencyName']} (#{d['id']})" }
+
+    response_as :success, data: data
   end
 
   get '/plugins' do
@@ -57,7 +60,7 @@ class App < Sinatra::Base
 
     response = Engine
       .new(plugin)
-      .convert(params[:value], from: params[:from], to: to)
+      .convert(params[:value], from: params[:from], to: to_currencies)
 
     if params.has_key? :text_format
       content_type :text
@@ -85,8 +88,19 @@ class App < Sinatra::Base
     params[:use] || ENV['DEFAULT_PLUGIN']
   end
 
-  def to
-    @to ||= begin
+  def sorted_currency
+    data = currency
+    if params[:sort] == 'most_used'
+      sorted = {}
+      most_used.each { |c| sorted[c] = data[c] }
+      sorted = sorted.merge(data.select { |a,_| !most_used.include? a }.to_h)
+      data = sorted
+    end
+    data
+  end
+
+  def to_currencies
+    @to_currencies ||= begin
       return currency.keys unless params[:to].present?
       params[:to].split(',')
     end
