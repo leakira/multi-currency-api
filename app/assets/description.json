@@ -1,8 +1,8 @@
 {
   "name": "MultiCurrency",
   "description": "API to multiple currency convertion",
-  "created_by": "https://github.com/leakira",
-  "repository": "https://github.com/leakira/multi-currecy",
+  "author": "https://github.com/leakira",
+  "repository": "https://github.com/leakira/multi-currecy-api",
   "actions": {
     "/currency": {
       "description": "Get list of all available currency to convert wth each description"

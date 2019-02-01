@@ -4,7 +4,11 @@
 API to multiple currency convertion
 
 ## Test using
+### API on Heroku
 http://multi-currency-api.herokuapp.com
+
+### iOS Shortcut
+https://www.icloud.com/shortcuts/a0a07e74e2a345ac8772c44ca7f49f05
 
 ## Endpoints
 - /currency: Get list of all available currencies to convert wth each description
@@ -39,6 +43,10 @@ Edit .env setting:
 - DEFAULT_PLUGIN: default plugin to convert if ?use is omitted
 - CURRENCY_CONVERTER_TOKEN: CurrencyConverter API key
 - CURRENCY_LAYER_TOKEN: CurrencyLayer API key
+
+## Tools used to develop
+- Ruby
+- Sinatra
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
