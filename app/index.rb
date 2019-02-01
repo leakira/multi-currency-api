@@ -75,13 +75,15 @@ class App < Sinatra::Base
         response_as :success, data: response
       end
     end
+  rescue => e
+    response_as :error, message: e.message
   end
 
   private
 
   def ensure_from_exists!
     return if currency.keys.include? params[:from]
-    raise '"from" parameter is mandatory'
+    raise '[from] parameter is mandatory'
   end
 
   def plugin
