@@ -1,6 +1,6 @@
 {
   "name": "MultiCurrency",
-  "description": "API to multiple currency convertion",
+  "description": "API to multiple currency conversion",
   "author": "https://github.com/leakira",
   "repository": "https://github.com/leakira/multi-currecy-api",
   "actions": {
