@@ -66,7 +66,7 @@ class App < Sinatra::Base
       content_type :text
 
       text = []
-      response.each { |_,data| text << "#{data['currencySymbol']} #{data['value'].round(2)} (#{data['id']})" }
+      response.each { |_,data| text << "#{data['currencySymbol']} #{data['value'].round(8)} (#{data['id']})" }
       text.join("\n")
     else
       if response[:error].present?
