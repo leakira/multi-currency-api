@@ -5,7 +5,7 @@ describe 'MultiCurrency', type: :controller do
     {
       success: 1,
       message: '',
-      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/description.json")),
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../assets/description.json")),
     }
   }
 
@@ -13,7 +13,7 @@ describe 'MultiCurrency', type: :controller do
     {
       success: 1,
       message: '',
-      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/currency.json")).sort.to_h,
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../assets/currency.json")).sort.to_h,
     }
   }
 
@@ -21,7 +21,7 @@ describe 'MultiCurrency', type: :controller do
     {
       success: 1,
       message: '',
-      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../app/assets/plugins.json")),
+      data: JSON.parse(File.read("#{File.dirname(__FILE__)}/../assets/plugins.json")),
     }
   }
 

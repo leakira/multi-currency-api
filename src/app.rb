@@ -56,6 +56,7 @@ class App < Sinatra::Base
   # - ?to: target currencies to convert. Optional. Need to pass by comma if has more than one
   # - ?use: use custom plugin. By default use free_currency_converter
   get '/convert/:value' do
+    ensure_value_is_numeric_exists!
     ensure_from_exists!
 
     response = Engine
@@ -79,7 +80,17 @@ class App < Sinatra::Base
     response_as :error, message: e.message
   end
 
+  post '/convert' do
+    #
+  end
+
   private
+
+  def ensure_value_is_numeric_exists!
+    Float(string)
+  rescue
+    raise '[value] parameter is not numeric'
+  end
 
   def ensure_from_exists!
     return if currency.keys.include? params[:from]
