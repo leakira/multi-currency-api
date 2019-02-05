@@ -7,7 +7,7 @@ gem 'dotenv', '~> 2.6'
 
 # Sinatra
 gem 'sinatra', '~> 2.0.5'
-gem 'async_sinatra', '~> 1.3'
+gem 'sinatra-cross_origin', '~> 0.4.0' # Cors
 
 # Curb
 gem 'curb', '~> 0.9.8'
@@ -22,12 +22,8 @@ group :production do
   gem 'sqreen'
 end
 
-
 group :development, :test do
   gem 'sinatra-reloader', '~> 1.0'
   gem 'rack-test', require: 'rack/test'
   gem 'rspec'
 end
-
-
-gem "sinatra-cross_origin", "~> 0.4.0"

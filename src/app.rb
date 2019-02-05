@@ -81,10 +81,6 @@ class App < Sinatra::Base
     response_as :error, message: e.message
   end
 
-  post '/convert' do
-    #
-  end
-
   private
 
   def ensure_value_is_numeric!
