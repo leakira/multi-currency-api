@@ -16,7 +16,7 @@
     "/convert": {
       "description": "Make conversion",
       "parameters": {
-        "value": "value to calculate",
+        "value": "value to convert",
         "?from": "base currency (ex: USD)",
         "?to": "target currencies to convert. Need to pass by comma if has more than one (ex: EUR,JPY). If not exists, convert with all available currency",
         "?use": "use custom plugin. By default use free_currency_converter"

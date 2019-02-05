@@ -1,5 +1,5 @@
 APP_PATH = "#{File.dirname(__FILE__)}/.."
-ASSET_PATH = "#{APP_PATH}/assets"
+ASSET_PATH = "#{APP_PATH}/../assets"
 
 def currency
   @currency ||= begin
