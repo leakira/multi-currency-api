@@ -1,8 +1,8 @@
 # MultiCurrency
 
-[![CircleCI](https://circleci.com/gh/leakira/multi-currency-api.svg?style=svg&circle-token=5ab05979cf9f875f0533e9644ced0e39cfff490b)](https://circleci.com/gh/leakira/multi-currency-api)
+[![CircleCI](https://circleci.com/gh/multi-currency/api.svg?style=svg)](https://circleci.com/gh/multi-currency/api)
 [![Github: @leakira](https://img.shields.io/badge/contact-@leakira-blue.svg?style=flat)](https://github.com/leakira)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/leakira/multi-currency-api/blob/master/LICENSE)
+[![License](LICENSE)
 
 API to multiple currency conversion
 
