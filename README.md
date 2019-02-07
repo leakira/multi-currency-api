@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/multi-currency/api.svg?style=svg)](https://circleci.com/gh/multi-currency/api)
 [![Github: @leakira](https://img.shields.io/badge/contact-@leakira-blue.svg?style=flat)](https://github.com/leakira)
-[![License](LICENSE)
+[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](LICENSE)
 
 API to multiple currency conversion
 
