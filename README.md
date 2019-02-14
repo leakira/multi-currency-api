@@ -44,6 +44,7 @@ https://www.icloud.com/shortcuts/a0a07e74e2a345ac8772c44ca7f49f05
 ## Configure for personal use
 Edit .env setting:
 - DEFAULT_PLUGIN: default plugin to convert if ?use is omitted
+- FREE_CURRENCY_CONVERTER_TOKEN: Free CurrencyConverter API key
 - CURRENCY_CONVERTER_TOKEN: CurrencyConverter API key
 - CURRENCY_LAYER_TOKEN: CurrencyLayer API key
 

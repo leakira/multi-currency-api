@@ -4,11 +4,15 @@ class FreeCurrencyConverter < Plugin
       'https://free.currencyconverterapi.com/api/v6'
     end
 
+    def token
+      ENV['FREE_CURRENCY_CONVERTER_TOKEN']
+    end
+
     # Performance test: 26s
     # Start: 2019-01-30 14:43:20 -0200
     # End: 2019-01-30 14:43:46 -0200
     def raw_run(value, from, to)
-      url = "#{api}/convert?q=#{from}_#{to}&compact=ultra"
+      url = "#{api}/convert?q=#{from}_#{to}&compact=ultra&apiKey=#{token}"
       pp "Running #{url}" if development?
       req = Curl.get url
       res = JSON.parse req.body_str
